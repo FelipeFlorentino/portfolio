@@ -58,3 +58,42 @@ $(document).ready(function() {
         distance: '20%'
     })
 });
+
+document.getElementById('theme-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
+    
+    const icon = document.querySelector('#theme-toggle i');
+    if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+});
+
+const translations = {
+    pt: null,
+    en: null,
+    es: null
+};
+
+async function loadTranslations(lang) {
+    if (!translations[lang]) {
+        const response = await fetch(`src/i18n/${lang}.json`);
+        const data = await response.json();
+        translations[lang] = data;
+    }
+}
+
+async function changeLanguage(lang) {
+    await loadTranslations(lang);
+    const elements = document.querySelectorAll("[data-i18n]");
+
+    elements.forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        element.textContent = translations[lang][key];
+    });
+}
+
+changeLanguage('pt');

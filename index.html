@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="src/styles/styles.css">
 
@@ -15,30 +16,44 @@
 <body>
     <header>
         <nav id="navbar">
-            <i class="fa-solid fa-code"> DEV</i>
-
-            <ul id="nav_list">
-                <li class="nav-item active">
-                    <a href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#sobre">Sobre</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projetos">Projetos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contato">Contato</a>
-                </li>
-                <li class="nav-item">
-                    <a href="">Mudar Tema</a>
-                </li>
-            </ul>
-
-            <button id="mobile_btn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <div class="navbar-left">
+                <i class="fa-solid fa-code"> DEV</i>
+        
+                <ul id="nav_list-countries">
+                    <div class="language-selector">
+                        <li>
+                            <a id="pt" onclick="changeLanguage('pt')">
+                                <img src="src/icons/brasil.png" alt="Português" class="flag-icon">
+                            </a>
+                        </li>
+                        <li>
+                            <a id="en" onclick="changeLanguage('en')">
+                                <img src="src/icons/estados-unidos.png" alt="English" class="flag-icon">
+                            </a>
+                        </li>
+                        <li>
+                            <a id="es" onclick="changeLanguage('es')">
+                                <img src="src/icons/espanha.png" alt="Español" class="flag-icon">
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        
+            <div class="navbar-right">
+                <ul id="nav_list">
+                    <li class="nav-item active"><a href="#home">Home</a></li>
+                    <li class="nav-item"><a href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a href="#projetos">Projetos</a></li>
+                    <li class="nav-item"><a href="#contato">Contato</a></li>
+                </ul>
+        
+                <button id="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
         </nav>
+        
 
         <div id="mobile_menu">
             <ul id="mobile_nav_list">
@@ -54,9 +69,6 @@
                 <li class="nav-item">
                     <a href="#contato">Contato</a>
                 </li>
-                <li class="nav-item">
-                    <a href="">Mudar Tema</a>
-                </li>
             </ul>
         </div>
     </header>
@@ -64,31 +76,31 @@
     <main id="content">
         <section id="home">
             <div id="cta">
-                <h1 class="title">
-                    Olá, me chamo <span>Felipe Florentino</span> e sou
-                    <span>Desenvolvedor de Sistemas</span>
-                </h1>
+                <div class="banner-content">
+                    <h1 data-i18n="home_title" class="title">Olá, Bem-vindo ao meu Portfólio, </h1>
+                    <h2 class="title">Me chamo <span>Felipe Florentino</span> e sou
+                        <span>Desenvolvedor de Sistemas</span></h2>
+                    <p class="description">
+                        Formado em Análise e Desenvolvimento de Sistemas pelo Instituto Federal de São Paulo - Campus Salto.
+                    </p>
 
-                <p class="description">
-                    Formado em Análise e Desenvolvimento de Sistemas pelo Instituto Federal de São Paulo - Campus Salto.
-                </p>
-
-                <div class="social-media-buttons">
-                    <a href="https://wa.me/5511947293330" target="_blank">
-                        <img src="src/icons/icons8-whatsapp-48.png">
-                    </a>
-
-                    <a href="https://www.instagram.com/_felipeflorentino?igsh=ZHd60Wg5ZmYwb2g2" target="_blank">
-                        <img src="src/icons/icons8-instagram-48.png">
-                    </a>
-
-                    <a href="https://linkedin.com/in/felipe-florentino-064196190" target="_blank">
-                        <img src="src/icons/icons8-linkedin-48.png">
-                    </a>
-
-                    <a href="">
-                        <img src="src/icons/icons8-github-48.png">
-                    </a>
+                    <div class="social-media-buttons">
+                        <a href="https://wa.me/5511947293330" target="_blank">
+                            <img src="src/icons/icons8-whatsapp-48.png">
+                        </a>
+    
+                        <a href="https://www.instagram.com/_felipeflorentino?igsh=ZHd60Wg5ZmYwb2g2" target="_blank">
+                            <img src="src/icons/icons8-instagram-48.png">
+                        </a>
+    
+                        <a href="https://linkedin.com/in/felipe-florentino-064196190" target="_blank">
+                            <img src="src/icons/icons8-linkedin-48.png">
+                        </a>
+    
+                        <a href="">
+                            <img src="src/icons/icons8-github-48.png">
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -97,50 +109,118 @@
             </div>
         </section>
 
-        <section id="sobre">
-            <h1 class="title">Sobre</h1>
-            <p class="description">
-                Sou um entusiasta da tecnologia apaixonado por desenvolvimento web e mobile.
-                Estou constantemente buscando aprender e crescer no vasto universo da tecnologia, sempre ansioso por desafios que me permitam expandir meus horizontes e aprimorar minhas habilidades. Abaixo segue as tecnologias que possuo conhecimento:
-            </p>
+        <section id="sobre" class="about">
+            <h1 data-i18n="about_title">Sobre</h1>
+            <p data-i18n="about_description">Estas são as principais tecnologias que utilizo:</p>
+        
+            <div class="technologies">
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                    <p>HTML5</p>
+                </div>
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                    <p>CSS3</p>
+                </div>
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native">
+                    <p>React Native</p>
+                </div>
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                    <p>Java</p>
+                </div>
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+                    <p>C#</p>
+                </div>
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                    <p>MySQL</p>
+                </div>
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                    <p>PostgreSQL</p>
+                </div>
+                <div class="tech-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                    <p>Git</p>
+                </div>
+            </div>
         </section>
 
-        <section id="projetos">
-            
+        <section id="projetos" class="projects">
+            <h1 data-i18n="projects_title">Meus Projetos</h1>
+            <div class="project-list">
+                <div class="project">
+                    <h2>Projeto 1</h2>
+                    <p>Descrição do projeto 1.</p>
+                </div>
+                <div class="project">
+                    <h2>Projeto 2</h2>
+                    <p>Descrição do projeto 2.</p>
+                </div>
+                <div class="project">
+                    <h2>Projeto 3</h2>
+                    <p>Descrição do projeto 3.</p>
+                </div>
+                <div class="project">
+                    <h2>Projeto 4</h2>
+                    <p>Descrição do projeto 4.</p>
+                </div>
+                <div class="project">
+                    <h2>Projeto 5</h2>
+                    <p>Descrição do projeto 5.</p>
+                </div>
+                <div class="project">
+                    <h2>Projeto 6</h2>
+                    <p>Descrição do projeto 6.</p>
+                </div>
+            </div>
         </section>
 
-        <section id="contato">
-            
+        <section id="contato" class="contact">
+            <h1>Entre em Contato</h1>
+            <form action="#">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
         </section>
     </main>
 
     <footer>
-        <img src="" alt="">
-
         <div id="footer_items">
             <span id="copyright">
                 &copy 2024 Felipe Florentino
             </span>
-
-            <div class="social-media-buttons">
-                <a href="https://wa.me/5511947293330" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-
-                <a href="https://www.instagram.com/_felipeflorentino?igsh=ZHd60Wg5ZmYwb2g2" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-
-                <a href="https://linkedin.com/in/felipe-florentino-064196190" target="_blank">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-
-                <a href="">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
+            
+            <a href="https://wa.me/5511947293330" target="_blank" aria-label="WhatsApp">
+                <img src="src/icons/icons8-whatsapp-48.png" alt="WhatsApp">
+            </a>
+            <a href="https://www.instagram.com/_felipeflorentino?igsh=ZHd60Wg5ZmYwb2g2" target="_blank" aria-label="Instagram">
+                <img src="src/icons/icons8-instagram-48.png" alt="Instagram">
+            </a>
+            <a href="https://linkedin.com/in/felipe-florentino-064196190" target="_blank" aria-label="LinkedIn">
+                <img src="src/icons/icons8-linkedin-48.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/SEU_GITHUB" target="_blank" aria-label="GitHub">
+                <img src="src/icons/icons8-github-48.png" alt="GitHub">
+            </a>
         </div>
-    </footer>
+    </footer>    
+
     <script src="src/javascript/script.js"></script>
 </body>
 </html>
